@@ -141,6 +141,7 @@ create table Product_Detail(
 	foreign key (ID_Style) references Style(ID_Style),
 );
 
+--tao bang Invoice
 create table Invoice(
 	ID_Invoice int identity(1,1) primary key not null,
 	Code_Invoice uniqueidentifier default newid() not null,
@@ -157,6 +158,7 @@ create table Invoice(
 	foreign key (ID_Staff) references Staff(ID_Staff)
 );
 
+--Tao Bang Invoice_Detail
 create table Invoice_Detail(
 	ID_Invoice_Detail int identity(1,1) primary key not null,
 	Code_Invoice_Detail uniqueidentifier default newid() not null,
@@ -168,4 +170,23 @@ create table Invoice_Detail(
 	Status int not null, --1: Chua thanh toan; 2: Da thanh toan; 0:Hien; 9: An
 	foreign key (ID_Invoice) references Invoice(ID_Invoice),
 	foreign key (ID_Product_Detail) references Product_Detail(ID_Product_Detail)
+);
+
+--Tao Bang Type_transaction
+create table Type_transaction(
+    ID_Type_transaction int identity(1,1) primary key not null,
+    Code_Type_transaction uniqueidentifier default newid() not null,
+    Name nvarchar(100) not null,
+    Status int not null
+);
+
+-- Tao Bang Transaction
+create table Transactions(
+    ID_Transaction int identity(1,1) primary key not null,
+    Code_Transaction uniqueidentifier default newid() not null,
+    ID_Type_transaction int not null,
+    ID_Invoice int not null,
+    Money int not  null,
+    foreign key (ID_Type_transaction) references Type_transaction(ID_Type_transaction),
+    foreign key (ID_Invoice) references Invoice(ID_Invoice)
 );
