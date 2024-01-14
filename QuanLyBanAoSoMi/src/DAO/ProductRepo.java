@@ -16,9 +16,6 @@ public class ProductRepo implements IProductRepo{
 //Tại Tầng DAO Đây là nơi sẽ code Các câu lệnh sql vào các bảng
 //    Có bao nhiêu bảng thì có bấy nhiêu class
 //    Đặt tên class là tên bảng + Repo   
-//    public String insert(){
-//        return"Thêm Thành Công";
-//    }
     public String update(){
         return"Sửa Thành Công";
     }
