@@ -4,18 +4,19 @@
  */
 package ViewModels;
 
+import BUS.IQLBrandService;
+
 /**
  *
  * @author 04dkh
  */
 public class SplitProduct extends javax.swing.JFrame {
-
-    /**
-     * Creates new form SplitProduct
-     */
+   IQLBrandService iQLBrandService;
+   
     public SplitProduct() {
         initComponents();
         setLocationRelativeTo(this);
+        iQLBrandService.filltable(tblBrand);
         
     }
 
@@ -36,7 +37,7 @@ public class SplitProduct extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblBrand = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -101,7 +102,7 @@ public class SplitProduct extends javax.swing.JFrame {
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblBrand.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -208,7 +209,7 @@ public class SplitProduct extends javax.swing.JFrame {
                 "Mã hãng", "Tên hãng", "Miêu tả"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblBrand);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Tên hãng");
@@ -914,7 +915,6 @@ public class SplitProduct extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable5;
@@ -929,5 +929,6 @@ public class SplitProduct extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
+    private javax.swing.JTable tblBrand;
     // End of variables declaration//GEN-END:variables
 }
