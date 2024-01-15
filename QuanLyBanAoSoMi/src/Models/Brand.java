@@ -65,5 +65,7 @@ public class Brand {
     public void setStatus(int Status) {
         this.Status = Status;
     }
+
+ 
     
 }

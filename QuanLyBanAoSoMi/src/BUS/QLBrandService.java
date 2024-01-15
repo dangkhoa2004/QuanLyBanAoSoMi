@@ -9,6 +9,7 @@ import DAO.IBrandRepo;
 import Models.Brand;
 import java.util.List;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -48,18 +49,63 @@ public class QLBrandService implements IQLBrandService{
     }
 
     @Override
-    public void addBrand() {
-       
+    public void addBrand(JTextField TenHang, JTextField MieuTa) {
+        try {
+            Brand br = new Brand();
+            br.setBrand_Name(TenHang.getText());
+            br.setDescribe_Brand(MieuTa.getText());
+            iBrandRepo.Insert(br);
+            System.out.println("Them thanh cong");
+        } catch (Exception e) {
+            System.out.println("them that bai");
+            e.printStackTrace();
+            
+        }
+    }
+
+  
+
+
+    @Override
+    public void updateBrand(JTextField TenHang, JTextField MieuTa, JTextField Ma) {
+        try {
+            Brand br = new Brand();
+            br.setBrand_Name(TenHang.getText());
+            br.setDescribe_Brand(MieuTa.getText());
+            br.setCode_Brand(Ma.getText());
+            iBrandRepo.Update(br);
+            System.out.println("cap nhat thanh cong");
+        } catch (Exception e) {
+            System.out.println("xoa that bai");
+            e.printStackTrace();
+            
+        }
+    
     }
 
     @Override
-    public void updateBrand() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void deleteBrand(JTextField Ma) {
+        try {
+            iBrandRepo.Delete(Ma.getText());
+            System.out.println("xoa thanh cong");
+        } catch (Exception e) {
+            System.out.println("xoa that bai");
+            e.printStackTrace();
+            
+        }
     }
 
     @Override
-    public void deleteBrand() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void click(JTextField TenHang, JTextField MieuTa,JTextField MaBrand, JTable table) {
+      int row = table.getSelectedRow();
+      String mahang = (String) table.getValueAt(row, 0);
+      String tenhang = (String) table.getValueAt(row, 1);
+      String mieuta = (String) table.getValueAt(row, 2);
+      MaBrand.setText(mahang);
+      TenHang.setText(tenhang);
+      MieuTa.setText(mieuta);
     }
+    
+
     
 }

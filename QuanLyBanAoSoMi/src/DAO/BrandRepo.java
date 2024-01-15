@@ -14,14 +14,14 @@ import java.sql.ResultSet;
  * @author truon
  */
 public class BrandRepo implements IBrandRepo{
-    String INSERT_SQL = "INSERT INTO Brand(Code_Brand,Brand,Describe_Brand,Status) Values(?,?,?,?)";
+    String INSERT_SQL = "INSERT INTO Brand(Brand,Describe_Brand,Status) Values(?,?,1)";
     String UPDATE_SQL ="Update brand set Brand=?,Describe_Brand= ? where Code_Brand= ?";
     String DELETE_SQL ="Update brand set Status = 0 where Code_Brand = ? ";
-    String READ= "select * from Brand";
+    String READ= "select * from Brand order by Code_Brand desc ";
     @Override
     public String Insert(Brand br) {
         try {
-            Helper.executeUpdate(INSERT_SQL,br.getCode_Brand(),br.getBrand_Name(),br.getStatus());
+            Helper.executeUpdate(INSERT_SQL,br.getBrand_Name(),br.getDescribe_Brand());
             return "Thêm thành công";
         } catch (Exception e) {
             e.printStackTrace();
