@@ -51,10 +51,10 @@ public class BrandRepo implements IBrandRepo{
             while (rs.next()) {
                 Brand br = new Brand();
                 br.setID_Brand(rs.getInt("ID_Brand"));
-                br.setCode_Brand(rs.getString("Code"));
-                br.setBrand_Name(rs.getString("Name_Brand"));
+                br.setCode_Brand(rs.getString("Code_Brand"));
+                br.setBrand_Name(rs.getString("Brand"));
                 br.setDescribe_Brand(rs.getString("Describe_Brand"));
-                br.setStatus(rs.getInt("Trang Thai"));
+                br.setStatus(rs.getInt("Status"));
                 list.add(br);
             }
             rs.getStatement().getConnection().close();
