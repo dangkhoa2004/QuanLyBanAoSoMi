@@ -46,5 +46,20 @@ public class QLBrandService implements IQLBrandService{
         }
     
     }
+
+    @Override
+    public void addBrand() {
+       
+    }
+
+    @Override
+    public void updateBrand() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void deleteBrand() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }

@@ -9,5 +9,7 @@ import javax.swing.JTable;
 
 public interface IQLBrandService {
     public void filltable(JTable tblBrand);
-    
+   public void addBrand();
+   public void updateBrand();
+   public void deleteBrand();
 }

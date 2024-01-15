@@ -2,16 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/truon/Desktop/DuAN1/QuanLyBanAoSoMi/src/ViewModels/TrangChu.java</file>
-            <file>file:/C:/Users/truon/Desktop/DuAN1/QuanLyBanAoSoMi/src/DAO/ProductRepo.java</file>
-            <file>file:/C:/Users/truon/Desktop/DuAN1/QuanLyBanAoSoMi/src/DAO/IBrandRepo.java</file>
-            <file>file:/C:/Users/truon/Desktop/DuAN1/QuanLyBanAoSoMi/src/BUS/IQLBrandService.java</file>
-            <file>file:/C:/Users/truon/Desktop/DuAN1/QuanLyBanAoSoMi/src/DAO/IProductRepo.java</file>
-            <file>file:/C:/Users/truon/Desktop/DuAN1/QuanLyBanAoSoMi/src/Utilities/Helper.java</file>
-            <file>file:/C:/Users/truon/Desktop/DuAN1/QuanLyBanAoSoMi/src/BUS/QLBrandService.java</file>
-            <file>file:/C:/Users/truon/Desktop/DuAN1/QuanLyBanAoSoMi/src/DAO/BrandRepo.java</file>
-            <file>file:/C:/Users/truon/Desktop/DuAN1/QuanLyBanAoSoMi/src/ViewModels/SplitProduct.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
