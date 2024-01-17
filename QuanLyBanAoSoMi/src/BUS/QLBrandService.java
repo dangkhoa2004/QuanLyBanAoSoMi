@@ -7,105 +7,74 @@ package BUS;
 import DAO.BrandRepo;
 import DAO.IBrandRepo;
 import Models.Brand;
+import Utilities.DiaLog;
+import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author truon
  */
-public class QLBrandService implements IQLBrandService{
+public class QLBrandService implements IQLBrandService {
+
     IBrandRepo iBrandRepo;
     List<Brand> lstBrand;
+   
     public QLBrandService() {
         iBrandRepo = new BrandRepo();
         lstBrand = iBrandRepo.selectALL();
     }
 
- 
-
     @Override
-    public void filltable(JTable tblBrand) {
-    DefaultTableModel model = (DefaultTableModel) tblBrand.getModel();
-        model.setRowCount(0);
-        try {
-            List<Brand> list = lstBrand;
-            for (Brand br : list) {
-               
-                    Object[] row = {br.getCode_Brand(),
-                        br.getBrand_Name(),
-                        br.getDescribe_Brand()
-                        
-                    };
-                    model.addRow(row);
-                
+    public boolean Insert(Brand br) {
+        if (isValidBrand(br)) {
+            if (iBrandRepo.Insert(br)) {
+                return true;
+
+            } else {
+                return false;
             }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    
-    }
 
-    @Override
-    public void addBrand(JTextField TenHang, JTextField MieuTa) {
-        try {
-            Brand br = new Brand();
-            br.setBrand_Name(TenHang.getText());
-            br.setDescribe_Brand(MieuTa.getText());
-            iBrandRepo.Insert(br);
-            System.out.println("Them thanh cong");
-        } catch (Exception e) {
-            System.out.println("them that bai");
-            e.printStackTrace();
-            
+        } else {
+            return false;
         }
     }
 
-  
+    private boolean isValidBrand(Brand br) {
+        
 
-
-    @Override
-    public void updateBrand(JTextField TenHang, JTextField MieuTa, JTextField Ma) {
-        try {
-            Brand br = new Brand();
-            br.setBrand_Name(TenHang.getText());
-            br.setDescribe_Brand(MieuTa.getText());
-            br.setCode_Brand(Ma.getText());
-            iBrandRepo.Update(br);
-            System.out.println("cap nhat thanh cong");
-        } catch (Exception e) {
-            System.out.println("xoa that bai");
-            e.printStackTrace();
-            
+        if (br.getBrand_Name() == null || br.getBrand_Name().isEmpty()) {
+            DiaLog.alert(null, "tên không được để trống");
+            return false;
         }
-    
+        
+
+        return true;
     }
 
     @Override
-    public void deleteBrand(JTextField Ma) {
-        try {
-            iBrandRepo.Delete(Ma.getText());
-            System.out.println("xoa thanh cong");
-        } catch (Exception e) {
-            System.out.println("xoa that bai");
-            e.printStackTrace();
-            
+    public boolean Update(Brand br) {
+        if (iBrandRepo.Update(br)) {
+            return true;
+
+        } else {
+            return false;
         }
     }
 
     @Override
-    public void click(JTextField TenHang, JTextField MieuTa,JTextField MaBrand, JTable table) {
-      int row = table.getSelectedRow();
-      String mahang = (String) table.getValueAt(row, 0);
-      String tenhang = (String) table.getValueAt(row, 1);
-      String mieuta = (String) table.getValueAt(row, 2);
-      MaBrand.setText(mahang);
-      TenHang.setText(tenhang);
-      MieuTa.setText(mieuta);
-    }
-    
+    public boolean Delete(String br) {
+        if (iBrandRepo.Delete(br)) {
+            return true;
 
-    
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public List<Brand> selectALL() {
+        return iBrandRepo.selectALL();
+    }
+
 }

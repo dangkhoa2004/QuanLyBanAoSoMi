@@ -2,24 +2,87 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package ViewModels;
+package VIEW;
 
+import ViewModels.*;
 import BUS.IQLBrandService;
 import BUS.QLBrandService;
+import Models.Brand;
+import Utilities.DiaLog;
+import java.util.List;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author 04dkh
  */
 public class SplitProduct extends javax.swing.JFrame {
-   IQLBrandService iQLBrandService;
-   
+
+    IQLBrandService iQLBrandService;
+    List<Brand> lstBrand;
+    int row = -1;
+
     public SplitProduct() {
         initComponents();
         setLocationRelativeTo(this);
-        iQLBrandService= new QLBrandService();
-        iQLBrandService.filltable(tblBrand);
-        
+        iQLBrandService = new QLBrandService();
+        filltable();
+
+    }
+
+    private Brand LayDuLieu() {
+        Brand br = new Brand();
+        br.setCode_Brand(txtMahang.getText());
+        br.setBrand_Name(txtTenhang.getText());
+        br.setDescribe_Brand(txtMieuTa.getText());
+        return br;
+    }
+
+    public void filltable() {
+        DefaultTableModel model = (DefaultTableModel) tblBrand.getModel();
+        model.setRowCount(0);
+        try {
+            if (iQLBrandService.selectALL().isEmpty()) {
+                System.out.println("khong co du lieu");
+                return;
+
+            }
+            lstBrand = iQLBrandService.selectALL();
+            for (Brand br : lstBrand) {
+                if (br.getStatus() != 0) {
+                    Object[] row = {br.getCode_Brand(),
+                        br.getBrand_Name(),
+                        br.getDescribe_Brand()
+
+                    };
+                    model.addRow(row);
+                }
+
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
+
+    public void clickTblBrand() {
+        int row = tblBrand.getSelectedRow();
+        String mahang = (String) tblBrand.getValueAt(row, 0);
+        String tenhang = (String) tblBrand.getValueAt(row, 1);
+        String mieuta = (String) tblBrand.getValueAt(row, 2);
+        txtMahang.setText(mahang);
+        txtTenhang.setText(tenhang);
+        txtMieuTa.setText(mieuta);
+
+    }
+
+    public void clearBrand() {
+        Brand br = new Brand();
+        txtMahang.setText(br.getCode_Brand());
+        txtTenhang.setText(br.getBrand_Name());
+        txtMieuTa.setText(br.getDescribe_Brand());
+        this.row = -1;
     }
 
     /**
@@ -246,6 +309,11 @@ public class SplitProduct extends javax.swing.JFrame {
         });
 
         btnMoi.setText("Moi");
+        btnMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMoiActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -866,20 +934,41 @@ public class SplitProduct extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-       iQLBrandService.addBrand(txtTenhang, txtMieuTa);
+        if (iQLBrandService.Insert(LayDuLieu())) {
+            filltable();
+            DiaLog.alert(this, "thêm thành công");
+        } else {
+            DiaLog.alert(this, "thêm thất bại");
+        }
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-          iQLBrandService.deleteBrand(txtMahang);
+        if (iQLBrandService.Delete(txtMahang.getText())) {
+            filltable();
+            DiaLog.alert(this, "xóa thành công");
+
+        } else {
+            DiaLog.alert(this, "xóa thất bại");
+        }
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-       iQLBrandService.updateBrand(txtTenhang, txtMieuTa, txtMahang);
+        if (iQLBrandService.Update(LayDuLieu())) {
+            filltable();
+            DiaLog.alert(this, "cập nhật thành công");
+
+        } else {
+            DiaLog.alert(this, "cập nhật thất bại");
+        }
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void tblBrandMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBrandMouseClicked
-       iQLBrandService.click(txtTenhang, txtMieuTa, txtMahang, tblBrand);
+        clickTblBrand();
     }//GEN-LAST:event_tblBrandMouseClicked
+
+    private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
+        clearBrand();
+    }//GEN-LAST:event_btnMoiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -906,6 +995,9 @@ public class SplitProduct extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(SplitProduct.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

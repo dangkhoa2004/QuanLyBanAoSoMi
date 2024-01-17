@@ -19,25 +19,25 @@ public class BrandRepo implements IBrandRepo{
     String DELETE_SQL ="Update brand set Status = 0 where Code_Brand = ? ";
     String READ= "select * from Brand order by Code_Brand desc ";
     @Override
-    public String Insert(Brand br) {
+    public boolean Insert(Brand br) {
         try {
             Helper.executeUpdate(INSERT_SQL,br.getBrand_Name(),br.getDescribe_Brand());
-            return "Thêm thành công";
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
-            return "Thêm thất bại";
+            return false;
         }
 
     }
 
     @Override
-    public String Update(Brand br) {
+    public boolean Update(Brand br) {
         try {
             Helper.executeUpdate(UPDATE_SQL, br.getBrand_Name(),br.getDescribe_Brand(),br.getCode_Brand());
-            return "Cập nhật thành công";
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
-            return "Cập nhật thất bại";
+            return false;
         }
     }
 
@@ -65,13 +65,13 @@ public class BrandRepo implements IBrandRepo{
         }}
 
     @Override
-    public String Delete(String br) {
+    public boolean Delete(String br) {
         try {
             Helper.executeUpdate(DELETE_SQL,br);
-            return "xóa thành công";
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
-            return "Xóa thất bại";
+            return false;
         }
     }
 
