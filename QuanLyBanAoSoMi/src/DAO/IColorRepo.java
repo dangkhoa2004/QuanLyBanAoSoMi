@@ -4,10 +4,17 @@
  */
 package DAO;
 
+import Models.Color;
+import java.util.List;
+
 /**
  *
  * @author truon
  */
 public interface IColorRepo {
-    
+    public boolean Insert(Color Cl);
+   public boolean Update(Color Cl);
+   public boolean Delete(String Cl);
+   public List<Color> selectBySQL(String sql,Object...args);
+   public List<Color> selectALL();
 }
