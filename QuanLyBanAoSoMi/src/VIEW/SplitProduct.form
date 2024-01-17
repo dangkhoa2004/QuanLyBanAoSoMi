@@ -244,6 +244,9 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtMahang">
+                          <Properties>
+                            <Property name="enabled" type="boolean" value="false"/>
+                          </Properties>
                         </Component>
                         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
                           <Properties>
@@ -437,6 +440,9 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="jTextField7">
+                          <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
+                          </Properties>
                         </Component>
                         <Container class="javax.swing.JScrollPane" name="jScrollPane3">
                           <Properties>
@@ -608,6 +614,9 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="jTextField10">
+                          <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
+                          </Properties>
                         </Component>
                         <Container class="javax.swing.JScrollPane" name="jScrollPane4">
                           <Properties>
@@ -795,6 +804,9 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="jTextField13">
+                          <Properties>
+                            <Property name="enabled" type="boolean" value="false"/>
+                          </Properties>
                         </Component>
                         <Container class="javax.swing.JScrollPane" name="jScrollPane5">
                           <Properties>

@@ -165,6 +165,8 @@ public class SplitProduct extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel1.setText("Mã hãng");
 
+        txtMahang.setEnabled(false);
+
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
 
         tblBrand.setModel(new javax.swing.table.DefaultTableModel(
@@ -381,6 +383,8 @@ public class SplitProduct extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel7.setText("Mã màu");
 
+        jTextField7.setEditable(false);
+
         jScrollPane3.setBackground(new java.awt.Color(255, 255, 255));
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
@@ -562,6 +566,8 @@ public class SplitProduct extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel10.setText("Mã kiểu");
 
+        jTextField10.setEditable(false);
+
         jScrollPane4.setBackground(new java.awt.Color(255, 255, 255));
 
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
@@ -673,6 +679,8 @@ public class SplitProduct extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel13.setText("Mã size");
+
+        jTextField13.setEnabled(false);
 
         jScrollPane5.setBackground(new java.awt.Color(255, 255, 255));
 
